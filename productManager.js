@@ -1,7 +1,7 @@
 class ProductManager {
     constructor() {
-      this.products = [];
-      this.productIdCounter = 1;
+      this.products = []
+      this.productIdCounter = 1
     }
   
     addProduct(product) {
@@ -14,37 +14,56 @@ class ProductManager {
         !product.code ||
         !product.stock
       ) {
-        console.log('Tenés que completar todos los campos!');
-        return;
+        console.log('Tenés que completar todos los campos!')
+        return
       }
   
   
-      const codigoExiste = this.products.some((p) => p.code === product.code);
+      const codigoExiste = this.products.some((p) => p.code === product.code)
       if (codigoExiste) {
-        console.log('El código del producto ya existe.');
-        return;
+        console.log('El código del producto ya existe.')
+        return
       }
   
-      product.id = this.productIdCounter;
-      this.products.push(product);
-      this.productIdCounter++;
+      product.id = this.productIdCounter
+      this.products.push(product)
+      this.productIdCounter++
   
-      console.log('Producto agregado con éxito.');
+      console.log('Producto agregado con éxito.')
     }
   
     getProducts() {
-      return this.products;
+      return this.products
     }
   
     getProductById(id) {
-      const product = this.products.find((p) => p.id === id);
+      const product = this.products.find((p) => p.id === id)
       if (product) {
-        return product;
+        return product
       } else {
-        console.log('Producto no encontrado.');
-        return null;
+        console.log('Producto no encontrado.')
+        return null
       }
     }
+
+    updateProduct(id, updatedField, updatedValue) {
+
+      const productIndex = this.products.findIndex((p) => p.id === id);
+
+      if (productIndex !== -1) {
+        this.products[productIndex][updatedField] = updatedValue
+        console.log('Producto actualizado con éxito.')
+      } else {
+        console.log('Producto no encontrado.')
+      }
+    }
+
+    deleteProduct(id) {
+ 
+      this.products = this.products.filter((p) => p.id !== id);
+      console.log('Producto eliminado con éxito.');
+    }
+  
   }
 
 ///////////////////////////////////////////////////////////////
@@ -78,7 +97,19 @@ productManager.addProduct(producto2)
 
 console.log(productManager.getProducts())
 
-
 // BÚSQUEDA DE PRODUCTO //
 
 console.log(productManager.getProductById(1))
+
+// UPGRADE //
+
+productManager.updateProduct(1, 'price', 49.99)
+
+// DELETE //
+
+productManager.deleteProduct(2)
+
+// VERIFICACIÓN UPDATE & DELETE //
+
+console.log('Nueva lista de productos:', productManager.getProducts());
+
