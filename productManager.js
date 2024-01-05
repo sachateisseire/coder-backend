@@ -1,5 +1,3 @@
-// testing //
-
 class ProductManager {
     constructor() {
       this.products = [];
@@ -48,3 +46,39 @@ class ProductManager {
       }
     }
   }
+
+///////////////////////////////////////////////////////////////
+
+// AGREGAR PRODUCTO //
+
+const productManager = new ProductManager();
+
+const producto1 = {
+  title: 'Producto 1',
+  description: 'Descripción del producto 1',
+  price: 29.99,
+  thumbnail: 'url_imagen_1',
+  code: 'P001',
+  stock: 50,
+};
+
+const producto2 = {
+  title: 'Producto 2',
+  description: 'Descripción del producto 2',
+  price: 39.99,
+  thumbnail: 'url_imagen_2',
+  code: 'P002',
+  stock: 30,
+};
+
+productManager.addProduct(producto1)
+productManager.addProduct(producto2)
+
+// LISTADO DE PRODUCTOS //
+
+console.log(productManager.getProducts())
+
+
+// BÚSQUEDA DE PRODUCTO //
+
+console.log(productManager.getProductById(1))
