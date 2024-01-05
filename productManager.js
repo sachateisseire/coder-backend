@@ -1,3 +1,5 @@
+// testing //
+
 class ProductManager {
     constructor() {
       this.products = [];
